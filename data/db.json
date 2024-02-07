@@ -1,0 +1,54 @@
+{
+    "appointments": [
+            {
+                "id": 1,
+                "date": "2024-01-02",
+                "doctorId": 1,
+                "startTime": "09:00",
+                "endTime": "09:30",
+                "patientName": "Hamza Nuruzada"
+            },
+            {
+                "id": 2,
+                "date": "2024-01-01",
+                "doctorId": 2,
+                "startTime": "10:00", 
+                "endTime": "10:45",
+                "patientName": "John Smith"
+            },
+            {
+                "id": 1,
+                "date": "2024-01-01",
+                "doctorId": 1,
+                "startTime": "09:00",
+                "endTime": "09:30",
+                "patientName": "Jane Doe"
+            },
+            {
+                "id": 2,
+                "date": "2024-01-01",
+                "doctorId": 2,
+                "startTime": "10:00", 
+                "endTime": "10:45",
+                "patientName": "John Smith"
+            }
+        ],
+    "doctors": [
+        {
+            "id": 1,
+            "name": "Mahammad"
+        },
+        {
+            "id": 2,
+            "name": "Hamza"
+        },
+        {
+            "id": 3,
+            "name": "Tamerlan"
+        },
+        {
+            "id": 3,
+            "name": "Nahla"
+        }
+    ]
+}
