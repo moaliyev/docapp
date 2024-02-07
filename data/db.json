@@ -14,23 +14,23 @@
                 "doctorId": 2,
                 "startTime": "10:00", 
                 "endTime": "10:45",
-                "patientName": "John Smith"
+                "patientName": "Mahammad Aliyev"
             },
             {
-                "id": 1,
+                "id": 3,
                 "date": "2024-01-01",
-                "doctorId": 1,
+                "doctorId": 3,
                 "startTime": "09:00",
                 "endTime": "09:30",
-                "patientName": "Jane Doe"
+                "patientName": "Tamerlan Ibadov"
             },
             {
-                "id": 2,
+                "id": 4,
                 "date": "2024-01-01",
                 "doctorId": 2,
                 "startTime": "10:00", 
                 "endTime": "10:45",
-                "patientName": "John Smith"
+                "patientName": "Leo Messi"
             }
         ],
     "doctors": [
@@ -47,7 +47,7 @@
             "name": "Tamerlan"
         },
         {
-            "id": 3,
+            "id": 4,
             "name": "Nahla"
         }
     ]

@@ -32,8 +32,9 @@ import Loader from "./../components/Loader";
 
 const ViewAppointments = () => {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-  const [appointment, setAppointment] = useState([]);
+  const [appointments, setAppointments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [doctors, setDoctors] = useState([]);
 
   const darkTheme = createTheme({
     palette: {
@@ -42,19 +43,34 @@ const ViewAppointments = () => {
   });
 
   useEffect(() => {
-    const getData = async () => {
-      await axios
-        .get(process.env.REACT_APP_GET_APPOINTMENTS, {
-          params: { date: "2024-01-01" },
-        })
-        .then(res => {
-          setAppointment(res.data);
-          setTimeout(() => setIsLoading(false), 1000);
+    const getAppointments = async () => {
+      const resolveRequest = () => {
+        axios.spread((appointments, doctors) => {
+          setAppointments(appointments);
+          setDoctors(doctors);
         });
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
+      };
+      await axios
+        .all([
+          axios.get(process.env.REACT_APP_GET_APPOINTMENTS, {
+            params: { date: "2024-01-01" },
+          }),
+          axios.get(process.env.REACT_APP_GET_APPOINTMENTS),
+        ])
+        .then(
+          axios.spread((appointments, doctors) => {
+            setAppointments(appointments.data);
+            setDoctors(doctors.data);
+            setTimeout(() => setIsLoading(false), 1000);
+          })
+        );
     };
-    getData();
-  }, []);
 
+    getAppointments();
+  }, []);
   return (
     <>
       {isLoading ? (
@@ -69,6 +85,7 @@ const ViewAppointments = () => {
           </Typography>
           <ThemeProvider theme={darkTheme}>
             <CssBaseline />
+            {/* Dialog to open when trying to delete an appointment */}
             <Dialog
               open={isDeleteDialogOpen}
               onClose={() => setIsDeleteDialogOpen(false)}
@@ -91,73 +108,55 @@ const ViewAppointments = () => {
               </DialogActions>
             </Dialog>
             <Stack direction="row" spacing={2}>
-              <Card>
-                <CardContent>
-                  <Typography
-                    component="div"
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      marginBottom: "16px",
-                    }}>
-                    <Avatar
-                      sx={{ bgcolor: "red"[500] }}
-                      aria-label="recipe"
-                      alt="Doctor Sm1"
-                    />
-                  </Typography>
-                  <Typography variant="h5" component="div">
-                    Doctoc Mahammad
-                  </Typography>
-                </CardContent>
-                <Divider />
-                <CardContent>
-                  <List
-                    sx={{
-                      width: "100%",
-                      maxWidth: 360,
-                      bgcolor: "background.paper",
-                    }}>
-                    <ListItem
-                      disablePadding
-                      style={{ marginBlock: "2px", alignItems: "center" }}>
-                      <ListItemIcon>
-                        <IconButton aria-label="comments">
-                          <EditIcon />
-                        </IconButton>
-                      </ListItemIcon>
-                      <ListItemText>Salam</ListItemText>
-                      <ListItemIcon>
-                        <IconButton
-                          aria-label="comments"
-                          onClick={() => setIsDeleteDialogOpen(true)}>
-                          <DeleteIcon />
-                        </IconButton>
-                      </ListItemIcon>
-                    </ListItem>
-                  </List>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardContent>
-                  <Typography
-                    component="div"
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      marginBottom: "16px",
-                    }}>
-                    <Avatar
-                      sx={{ bgcolor: "red"[500] }}
-                      aria-label="recipe"
-                      alt="Doctor Sm1"
-                    />
-                  </Typography>
-                  <Typography variant="h5" component="div">
-                    Doctoc Mahammad
-                  </Typography>
-                </CardContent>
-              </Card>
+              {appointments.map(item => (
+                <Card key={item.id}>
+                  <CardContent>
+                    <Typography
+                      component="div"
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        marginBottom: "16px",
+                      }}>
+                      <Avatar
+                        sx={{ bgcolor: "red"[500] }}
+                        aria-label="recipe"
+                        // alt={}
+                      />
+                    </Typography>
+                    <Typography variant="h5" component="div">
+                      Doctoc Mahammad
+                    </Typography>
+                  </CardContent>
+                  <Divider />
+                  <CardContent>
+                    <List
+                      sx={{
+                        width: "100%",
+                        maxWidth: 360,
+                        bgcolor: "background.paper",
+                      }}>
+                      <ListItem
+                        disablePadding
+                        style={{ marginBlock: "2px", alignItems: "center" }}>
+                        <ListItemIcon>
+                          <IconButton aria-label="comments">
+                            <EditIcon />
+                          </IconButton>
+                        </ListItemIcon>
+                        <ListItemText>Salam</ListItemText>
+                        <ListItemIcon>
+                          <IconButton
+                            aria-label="comments"
+                            onClick={() => setIsDeleteDialogOpen(true)}>
+                            <DeleteIcon />
+                          </IconButton>
+                        </ListItemIcon>
+                      </ListItem>
+                    </List>
+                  </CardContent>
+                </Card>
+              ))}
             </Stack>
           </ThemeProvider>
         </section>
