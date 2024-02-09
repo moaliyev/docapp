@@ -50,16 +50,20 @@ const Header = () => {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}>
       <List>
-        {["Add Appointment", "View Appointments"].map((text, index) => (
-          <ListItem key={text} disablePadding>
+        <Link style={{ textDecoration: "none", color: "#fff" }} to="/add">
+          <ListItem disablePadding>
             <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary="Add Appointment" />
             </ListItemButton>
           </ListItem>
-        ))}
+        </Link>
+        <Link style={{ textDecoration: "none", color: "#fff" }} to="/">
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemText primary="View Appointments" />
+            </ListItemButton>
+          </ListItem>
+        </Link>
       </List>
     </Box>
   );
