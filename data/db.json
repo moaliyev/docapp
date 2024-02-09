@@ -1,54 +1,38 @@
 {
-    "appointments": [
-            {
-                "id": 1,
-                "date": "2024-01-02",
-                "doctorId": 1,
-                "startTime": "09:00",
-                "endTime": "09:30",
-                "patientName": "Hamza Nuruzada"
-            },
-            {
-                "id": 2,
-                "date": "2024-01-01",
-                "doctorId": 2,
-                "startTime": "10:00", 
-                "endTime": "10:45",
-                "patientName": "Mahammad Aliyev"
-            },
-            {
-                "id": 3,
-                "date": "2024-01-01",
-                "doctorId": 3,
-                "startTime": "09:00",
-                "endTime": "09:30",
-                "patientName": "Tamerlan Ibadov"
-            },
-            {
-                "id": 4,
-                "date": "2024-01-01",
-                "doctorId": 2,
-                "startTime": "10:00", 
-                "endTime": "10:45",
-                "patientName": "Leo Messi"
-            }
-        ],
-    "doctors": [
-        {
-            "id": 1,
-            "name": "Mahammad"
-        },
-        {
-            "id": 2,
-            "name": "Hamza"
-        },
-        {
-            "id": 3,
-            "name": "Tamerlan"
-        },
-        {
-            "id": 4,
-            "name": "Nahla"
-        }
-    ]
+  "appointments": [
+    {
+      "id": "1",
+      "date": "2024-01-02",
+      "doctorId": 1,
+      "startTime": "09:00",
+      "endTime": "09:30",
+      "patientName": "Hamza Nuruzada"
+    },
+    {
+      "id": "2",
+      "date": "2024-01-01",
+      "doctorId": 2,
+      "startTime": "10:00",
+      "endTime": "10:45",
+      "patientName": "Mahammad Aliyev"
+    }
+  ],
+  "doctors": [
+    {
+      "id": "1",
+      "name": "Mahammad"
+    },
+    {
+      "id": "2",
+      "name": "Hamza"
+    },
+    {
+      "id": "3",
+      "name": "Tamerlan"
+    },
+    {
+      "id": "4",
+      "name": "Nahla"
+    }
+  ]
 }

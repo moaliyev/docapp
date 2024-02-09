@@ -1,17 +1,13 @@
 import React from "react";
 import {
   Box,
-  Typography,
-  MenuItem,
   Container,
   AppBar,
   Toolbar,
   IconButton,
-  Menu,
   Button,
   Drawer,
   List,
-  Divider,
   ListItem,
   ListItemButton,
   ListItemIcon,
@@ -29,8 +25,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [isNavOpen, setIsNavOpen] = useState(null);
-
   const [state, setState] = useState({
     top: false,
     left: false,
@@ -88,12 +82,23 @@ const Header = () => {
               <MenuIcon />
             </IconButton>
           </Box>
-          <Link className="logoLinkMobile">LOGO</Link>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button sx={{ my: 2, color: "white", display: "block" }}>
-              View Appointments
-            </Button>
-          </Box>
+          <Link className="logoLinkMobile" to="/">
+            LOGO
+          </Link>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              <Button sx={{ my: 2, color: "white", display: "block" }}>
+                Add Appointment
+              </Button>
+            </Box>
+          </Link>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              <Button sx={{ my: 2, color: "white", display: "block" }}>
+                View Appointments
+              </Button>
+            </Box>
+          </Link>
         </Toolbar>
         <Drawer
           anchor={"left"}
