@@ -9,6 +9,8 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import EditAppointment from "./pages/EditAppointment";
+import AddAppointment from "./pages/AddAppointment";
 function App() {
   const darkTheme = createTheme({
     palette: {
@@ -24,6 +26,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<ViewAppointments />} />
+            <Route path="/edit/:id" element={<EditAppointment />} />
+            <Route path="/add" element={<AddAppointment />} />
           </Routes>
         </ThemeProvider>
       </main>

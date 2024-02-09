@@ -1,22 +1,21 @@
 {
-  "appointments": [
-    {
-      "id": "1",
-      "date": "2024-01-02",
-      "doctorId": 1,
-      "startTime": "09:00",
-      "endTime": "09:30",
-      "patientName": "Hamza Nuruzada"
+  "appointments": [ 
+    { "id": 1,
+    "date": "2024-02-09",
+     "doctorId": 1,
+     "startTime": "09:00",
+     "endTime": "09:30",
+     "patientName": "Jane Doe" 
     },
-    {
-      "id": "2",
-      "date": "2024-01-01",
+     { 
+      "id": 2,
+      "date": "2024-02-09",
       "doctorId": 2,
       "startTime": "10:00",
       "endTime": "10:45",
-      "patientName": "Mahammad Aliyev"
+      "patientName": "John Smith" 
     }
-  ],
+],
   "doctors": [
     {
       "id": "1",

@@ -48,15 +48,16 @@ const ViewAppointments = () => {
   const handleDelete = async id => {
     await axios
       .delete(`${process.env.REACT_APP_DELETE_APPOINTMENT}${id}`)
-      .then(res =>
+      .then(res => {
         toast.success("Appointment deleted successfully", {
           style: {
             borderRadius: "10px",
             background: "#333",
             color: "#fff",
           },
-        })
-      )
+        });
+        appointments.filter(item => item.id !== id);
+      })
       .catch(err => {
         console.log(err);
         toast.error("An error occured", {
@@ -75,9 +76,7 @@ const ViewAppointments = () => {
         .all([
           axios.get(process.env.REACT_APP_GET_APPOINTMENTS, {
             params: {
-              date: `${date.year()}-${date.month() + 1 < 10 ? "0" : ""}${
-                date.month() + 1
-              }-${date.day() < 10 ? "0" : ""}${date.day()}`,
+              date: `${date.format("YYYY-MM-DD")}`,
             },
           }),
           axios.get(process.env.REACT_APP_GET_DOCTORS),
@@ -92,7 +91,7 @@ const ViewAppointments = () => {
     };
 
     getAppointments();
-  }, [date]);
+  }, [date, appointments]);
   return (
     <>
       {isLoading ? (
@@ -135,6 +134,7 @@ const ViewAppointments = () => {
                 label="Appointment Date"
                 value={date}
                 onChange={newDate => setDate(newDate)}
+                format="DD-MM-YYYY"
               />
             </Typography>
 
@@ -188,7 +188,7 @@ const ViewAppointments = () => {
                         disablePadding
                         style={{ marginBlock: "2px", alignItems: "center" }}>
                         <ListItemIcon>
-                          <Link to="/edit">
+                          <Link to={`/edit/${item.id}`}>
                             <IconButton aria-label="comments">
                               <EditIcon />
                             </IconButton>
