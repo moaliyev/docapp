@@ -69,7 +69,9 @@ const Header = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Link className="logoLink">LOGO</Link>
+          <Link className="logoLink" to="/">
+            LOGO
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -85,7 +87,7 @@ const Header = () => {
           <Link className="logoLinkMobile" to="/">
             LOGO
           </Link>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/add" style={{ textDecoration: "none" }}>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               <Button sx={{ my: 2, color: "white", display: "block" }}>
                 Add Appointment
